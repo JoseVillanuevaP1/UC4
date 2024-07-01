@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  {{ titulo }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="title">{{ titulo }}</h1>
+  {% if messages %}
+    {% for message in messages %}
+      <div class="message">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  {% for estudiante in estudiantes %}
+    <div class="estudiante-item">
+      <div class="data">
+        <h2>{{ estudiante.nombre }} {{ estudiante.apepat }} {{ estudiante.apemat }}</h2>
+        <span class="dni">DNI: {{ estudiante.dni }}</span>
+        <span class="codigo">Código: {{ estudiante.codigo }}</span>
+        <span class="direccion">Dirección: {{ estudiante.direccion }}</span>
+        <span class="telefono">Teléfono: {{ estudiante.telefono }}</span>
+        {% if estudiante.estado %}
+          <strong>Activo</strong>
+        {% else %}
+          <strong>Inactivo</strong>
+        {% endif %}
+      </div>
+      <div class="clearfix"></div>
+    </div>
+  {% endfor %}
+{% endblock %}
